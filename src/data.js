@@ -14,7 +14,7 @@ const data={
             image:img1,
             price:120,
             brand:'Nike',
-            rating:4.5,
+            rating:3.5,
             numReviews:10,
             description:"hight quality product"
 
@@ -26,7 +26,7 @@ const data={
             image:img2,
             price:100,
             brand:'Addidas',
-            rating:4,
+            rating:4.5,
             numReviews:10,
             description:"hight quality product"
 
@@ -38,7 +38,7 @@ const data={
             image:img3,
             price:220,
             brand:'Lacoste',
-            rating:3.5,
+            rating:2.5,
             numReviews:10,
             description:"hight quality product"
 
@@ -50,7 +50,7 @@ const data={
             image:img4,
             price:2000,
             brand:'Puma',
-            rating:5,
+            rating:1.5,
             numReviews:10,
             description:"hight quality product"
 
@@ -62,7 +62,7 @@ const data={
             image:img5,
             price:480,
             brand:'New Balance',
-            rating:4,
+            rating:4.5,
             numReviews:10,
             description:"hight quality product"
 
@@ -74,7 +74,7 @@ const data={
             image:img6,
             price:1890,
             brand:'Rebook',
-            rating:3.2,
+            rating:5,
             numReviews:10,
             description:"hight quality product"
 
