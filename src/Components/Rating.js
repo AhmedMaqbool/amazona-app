@@ -2,7 +2,7 @@ import React from 'react'
 
 export const Rating = ({rating,numReviews}) => {
 
-         console.log(rating)
+         
     return (
         <div className="rating">
             <span> <i className={
