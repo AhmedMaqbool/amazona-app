@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom'
 
 const ProductScreen = (props) => {
        
+    console.log(props)
    const product = data.product.find((x)=> x._id=== props.match.params.id);
      if(!product)
      {
@@ -46,7 +47,7 @@ const ProductScreen = (props) => {
                                    <div>Status</div>
                                   {
                                       product.countInStock>0?<span className="success">IN STOCK</span>
-                                      : <span className="error">Unavailable</span>
+                                      : <span className="danger">Unavailable</span>
                                   }
                                 </div>
                             </li>
