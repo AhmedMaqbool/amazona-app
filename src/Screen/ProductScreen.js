@@ -1,23 +1,41 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import data from '../data';
 import  Rating from '../Components/Rating'
 import {Link} from 'react-router-dom'
+import {useSelector,useDispatch} from 'react-redux';
+import MessageBox from '../Components/MessageBox';
+import LoadingBox from '../Components/LoadingBox'
+import { detailsProduct } from '../Actions/ProductActions';
+import p1 from '../images/p1.jpg'
 
 const ProductScreen = (props) => {
        
     console.log(props)
-   const product = data.product.find((x)=> x._id=== props.match.params.id);
-     if(!product)
-     {
-         return <div>Product Not Found</div>
-     } 
+     const productDetails = useSelector((state)=>state.productDetails)
+     const dispatch = useDispatch()
+     const productId=props.match.params.id;
+     const {loading,error,product}=productDetails;
+
+     useEffect(() => {
+        
+        dispatch(detailsProduct(productId))
+     }, [])
+
+    
    return (
           
+    <div>
+
+        {loading?<LoadingBox></LoadingBox>
+        :    
+        error?<MessageBox variant='danger'>{error}</MessageBox>
+        :  
+
         <div>
             <Link to='/'>Back To Results</Link>
           <div className="row top">
               <div className="col-2">
-                   <img className="large" src={product.image} alt={product.name}/>
+                   <img className="large" src={p1} alt={product.name}/>
               </div>
               <div className="col-1">
                    <ul>
@@ -59,6 +77,10 @@ const ProductScreen = (props) => {
               </div>
           </div>
         </div>
+        
+        }
+    </div>
+    
     )
 }
 
