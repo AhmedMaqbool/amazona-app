@@ -1,24 +1,23 @@
 import React from 'react'
 import Rating from './Rating'
 import data from '../data'
-
+import {Link} from 'react-router-dom';
 
 
 const Product = ({product}) => {
+ 
 
-             console.log(product.image)
-     
-    return (
+        return (
         
         <div key={product._id} className="card">
-        <a href={`/product/${product._id}`}>
+        <Link to={`/product/${product._id}`}>
           
         <img className="medium" src={data.product[`${product.image}`].image} alt={product.name}/>
-        </a>
+        </Link>
         <div className="card-body">
-          <a href="product.html">
+          <Link to="product.html">
             <h2>{product.name}</h2>
-          </a>
+            </Link>
           <Rating rating={product.rating} numReviews={product.numReviews}/>
 
           <div className="price">$ {product.price}</div>

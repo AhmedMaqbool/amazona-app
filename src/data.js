@@ -80,6 +80,18 @@ const data = {
         numReviews: 15,
         description: 'high quality product',
       },
+      {
+        _id: '6',
+        name: 'Adidas Fit Pant',
+        category: 'Pants',
+        image: img6,
+        price: 139,
+        countInStock: 12,
+        brand: 'Adidas',
+        rating: 4.5,
+        numReviews: 15,
+        description: 'high quality product',
+      },
     ],
   };
   export default data;
