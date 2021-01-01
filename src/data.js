@@ -8,7 +8,7 @@ import img6 from './images/p6.jpg'
 const data = {
     product: [
       {
-        _id: '1',
+        _id: '0',
         name: 'Nike Slim Shirt',
         category: 'Shirts',
         image: img1,
@@ -21,7 +21,7 @@ const data = {
         
       },
       {
-        _id: '2',
+        _id: '1',
         name: 'Adidas Fit Shirt',
         category: 'Shirts',
         image: img2,
@@ -33,7 +33,7 @@ const data = {
         description: 'high quality product',
       },
       {
-        _id: '3',
+        _id: '2',
         name: 'Lacoste Free Shirt',
         category: 'Shirts',
         image: img3,
@@ -45,7 +45,7 @@ const data = {
         description: 'high quality product',
       },
       {
-        _id: '4',
+        _id: '3',
         name: 'Nike Slim Pant',
         category: 'Pants',
         image: img4,
@@ -57,7 +57,7 @@ const data = {
         description: 'high quality product',
       },
       {
-        _id: '5',
+        _id: '4',
         name: 'Puma Slim Pant',
         category: 'Pants',
         image: img5,
@@ -69,7 +69,7 @@ const data = {
         description: 'high quality product',
       },
       {
-        _id: '6',
+        _id: '5',
         name: 'Adidas Fit Pant',
         category: 'Pants',
         image: img6,
