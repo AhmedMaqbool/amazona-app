@@ -42,7 +42,7 @@ const ProductScreen = (props) => {
             <Link to='/'>Back To Results</Link>
           <div className="row top">
               <div className="col-2">
-                   <img className="large" src={data.product[productId].image} alt={product.name}/>
+                   <img className="large" src={data.product[0].image} alt={product.name}/>
               </div>
               <div className="col-1">
                    <ul>
