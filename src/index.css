@@ -229,6 +229,10 @@ img.large
 }
 
 /* Alert */
+
+.loading span{
+      display: block !important;
+}
 .success{
   color: #20a020;
 }
