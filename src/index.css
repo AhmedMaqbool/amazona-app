@@ -302,4 +302,20 @@ img.large
   display: block;
 }
 
+/* Checkout */
 
+.checkout-steps>div
+ {
+    border-top: 0.3rem #c0c0c0 solid ;
+    flex: 1;
+    padding: 1rem;
+    font-weight: bold;
+
+} 
+
+.checkout-steps >div.active
+{
+   border-top-color: #ff8000;
+  color: #ff8000;
+
+}
