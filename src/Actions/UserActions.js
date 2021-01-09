@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import {USER_REGISTER_FAIL, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_SIGNIN_FAIL, USER_SIGNIN_REQUEST, USER_SIGNIN_SIGNOUT, USER_SIGNIN_SUCCESS} from '../Constants/UserConstant'
+import {USER_REGISTER_FAIL, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_SIGNIN_FAIL, USER_SIGNIN_REQUEST, USER_SIGNOUT, USER_SIGNIN_SUCCESS} from '../Constants/UserConstant'
 
 // Sign Action
 export const signin=(email,password)=>async(dispatch)=>
@@ -47,5 +47,6 @@ export const signOut =()=>(dispatch)=>
 {
     localStorage.removeItem('userInfo');
     localStorage.removeItem('cartItems');
-    dispatch({type:USER_SIGNIN_SIGNOUT})
+    localStorage.removeItem('shippingAddress');
+    dispatch({type:USER_SIGNOUT})
 }
