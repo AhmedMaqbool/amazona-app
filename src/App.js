@@ -10,6 +10,7 @@ import {signOut} from './Actions/UserActions'
 import RegisterScreen from './Screen/RegisterScreen';
 import ShippingAddressScreen from './Screen/ShippingAddressScreen';
 import PaymentMethodScreen from './Screen/PaymentMethodScreen';
+import PlaceOrderScreen from './Screen/PlaceOrderScreen';
 
 
 
@@ -63,6 +64,7 @@ function App() {
       <Route path='/register' component={RegisterScreen}></Route>
       <Route path='/shipping' component={ShippingAddressScreen}></Route>
       <Route path='/payment' component={PaymentMethodScreen}></Route>
+      <Route path='/placeorder' component={PlaceOrderScreen}></Route>
       <Route path='/product/:id' component={ProductScreen}></Route>
     </main>
     <footer className="row center">All right reserved</footer>
