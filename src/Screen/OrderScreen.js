@@ -3,50 +3,31 @@ import { useSelector,useDispatch } from 'react-redux'
 import CheckOutSteps from '../Components/CheckOutSteps'
 import data from '../data';
 import {Link} from 'react-router-dom';
-import { createOrder } from '../Actions/OrderActions';
-import { ORDER_CREATE_RESET } from '../Constants/OrderConstants';
 import LoadingBox from '../Components/LoadingBox';
 import MessageBox from '../Components/MessageBox';
+import {detailsOrder} from '../Actions/OrderActions'
 
-const PlaceOrderScreen = (props) => {
+const OrderScreen = (props) => {
     
-     const cart =useSelector(state=>state.cart)
      const dispatch = useDispatch()
-     if(!cart.paymentMethod)
-     {
-         props.history.push('/payment');
-     } 
+     
 
-     const orderCreate = useSelector(state=>state.orderCreate)
-     const {loading,success,error,order}=orderCreate;
+    const orderId=props.match.params.id
+    const orderDeatils = useSelector(state => state.orderDeatils)
+    const {order,loading,error}=orderDeatils;
 
-     const toPrice=(num)=>
-     {
-           Number(num.toFixed(2))    
-     }
-    cart.itemsPrice=toPrice(cart.cartItems.reduce((a,c)=>a+c.qty*c.price,0))
-    cart.shippingPrice=cart.itemsPrice>100?toPrice(0):toPrice(10)
-    cart.taxPrice=toPrice(0.15*cart.itemsPrice)
-    cart.totalPrice=cart.itemsPrice+cart.shippingPrice+cart.taxPrice;
+     
+             useEffect(()=>{
+              
+            dispatch(detailsOrder(orderId))
+              
+          },[dispatch,orderId])
+
     
-const placeOrderHandler=()=>
-{
-         dispatch(createOrder({...cart,orderItems:cart.cartItems}))
-}
-
-
-          useEffect(()=>{
-             if(success)
-             {
-               props.history.push(`/order/${order._id}`);
-               dispatch({type:ORDER_CREATE_RESET})
-             }    
-
-          },[success,dispatch,props.history,order])
-
-    return (
+    
+      return loading? (<LoadingBox></LoadingBox>):error?<MessageBox variant='danger'>{error}</MessageBox>: (
         <div>
-            <CheckOutSteps step1 step2 step3 step4></CheckOutSteps>
+          <h1>Order {order._id}</h1>
             <div className='row top'>
                 <div className="col-2">
               <ul>
@@ -54,29 +35,37 @@ const placeOrderHandler=()=>
                       <div className='cart cart-body'>
                         <h2>Shipping</h2>
                         <p>
-                            <strong>Name:</strong>{cart.shippingAddress.fullName} <br/>
-                            <strong>Addres:</strong>{cart.shippingAddress.address},
-                            {cart.shippingAddress.city},
-                            {cart.shippingAddress.postalCode},
-                            {cart.shippingAddress.country},
+                            <strong>Name:</strong>{order.shippingAddress.fullName} <br/>
+                            <strong>Addres:</strong>{order.shippingAddress.address},
+                            {order.shippingAddress.city},
+                            {order.shippingAddress.postalCode},
+                            {order.shippingAddress.country},
                     ,
 
                         </p>
+                        {order.isDelivered?<MessageBox variant='success'>Delivered At {order.DeliveredAt}</MessageBox>
+                        :(<MessageBox variant='danger' >Not Delivered</MessageBox>)
+ 
+                            }
                       </div>
                   </li>
                   <li>
                       <div className='cart cart-body'>
                         <h2>Payment</h2>
                         <p>
-                            <strong>Metod:</strong>{cart.paymentMethod}
+                            <strong>Metod:</strong>{order.paymentMethod}
                         </p>
+                        {order.isPaid?<MessageBox variant='success'>Paid At {order.paidAt}</MessageBox>
+                        :(<MessageBox variant='danger' >Not Paid</MessageBox>)
+ 
+                            }
                       </div>
                   </li>
                   <li>
                       <div className='cart cart-body'>
                         <h2>Order Items</h2>
                         <ul>
-            {cart.map((item) => (
+            {order.map((item) => (
               <li key={item.product}>
                 <div className="row">
                   <div>
@@ -110,36 +99,28 @@ const placeOrderHandler=()=>
                            <li>
                                <div className='row'>
                                   <div>Items</div>
-                                  <div>${cart.itemsPrice}</div>
+                                  <div>${order.itemsPrice}</div>
                                </div>
                            </li>
                            <li>
                                <div className='row'>
                                   <div>Shipping</div>
-                                  <div>${cart.shippingPrice}</div>
+                                  <div>${order.shippingPrice}</div>
                                </div>
                            </li>
                            <li>
                                <div className='row'>
                                   <div>Tax</div>
-                                  <div>${cart.taxPrice}</div>
+                                  <div>${order.taxPrice}</div>
                                </div>
                            </li>
                            <li>
                                <div className='row'>
                                   <div> <strong>Order Total</strong> </div>
-                                  <div><strong>${cart.totalPrice}</strong></div>
+                                  <div><strong>${order.totalPrice}</strong></div>
                                </div>
                            </li>
-                           <li>
-                             <button type='button' disabled={cart.cartItems.length===0} className='primary block' onClick={placeOrderHandler} ></button>  
-                           </li>
-                           {
-                             loading && <LoadingBox></LoadingBox>
-                           }
-                           {
-                             error&&<MessageBox variant='danger'>{error}</MessageBox>
-                           }
+                           
                        </ul>
                     </div>
                 </div>
@@ -149,4 +130,4 @@ const placeOrderHandler=()=>
     )
 }
 
-export default PlaceOrderScreen
+export default OrderScreen
