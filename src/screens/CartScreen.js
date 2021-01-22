@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { addToCart, removeFromCart } from '../Actions/CartAction';
-import MessageBox from '../Components/MessageBox';
-import data from '../data'
+import { addToCart , removeFromCart } from '../actions/cartActions';
+import MessageBox from '../components/MessageBox';
 
 export default function CartScreen(props) {
   const productId = props.match.params.id;
@@ -20,7 +19,8 @@ export default function CartScreen(props) {
   }, [dispatch, productId, qty]);
 
   const removeFromCartHandler = (id) => {
-     dispatch(removeFromCart(id));
+    // delete action
+    dispatch(removeFromCart(id));
   };
 
   const checkoutHandler = () => {
@@ -41,7 +41,7 @@ export default function CartScreen(props) {
                 <div className="row">
                   <div>
                     <img
-                      src={data.product[1].image}
+                      src={item.image}
                       alt={item.name}
                       className="small"
                     ></img>
