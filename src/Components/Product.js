@@ -6,12 +6,12 @@ import Rating from './Rating';
 export default function Product(props) {
   const { product } = props;
 
-                
+              
 
   return (
     <div key={product._id} className="card">
       <Link to={`/product/${product._id}`}>
-        <img className="medium" src={data.products[1].image} alt={product.name} />
+        <img className="medium" src={data.products[Math.floor(Math.random() * 5)].images} alt={product.name} />
       </Link>
       <div className="card-body">
         <Link to={`/product/${product._id}`}>

@@ -5,6 +5,7 @@ import { detailsProduct } from '../actions/productActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import Rating from '../components/Rating';
+import data from '../data';
 
 export default function ProductScreen(props) {
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ export default function ProductScreen(props) {
             <div className="col-2">
               <img
                 className="large"
-                src={product.image}
+                src={data.products[1].images}
                 alt={product.name}
               ></img>
             </div>
